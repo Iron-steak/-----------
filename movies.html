@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filmy - Netflix</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="movies-body">
+
+    <main class="movies-page-container">
+        <!-- Ovládací prvky nahoře -->
+        <div class="movies-controls">
+            <a href="index.html" class="btn btn-red">Úvodní strana</a>
+            <select id="category-select" class="category-select">
+                <option value="Girl">Girl</option>
+                <option value="Action">Action</option>
+                <option value="Comedy">Comedy</option>
+                <option value="Drama">Drama</option>
+                <option value="Horror">Horror</option>
+                <option value="Romance">Romance</option>
+                <option value="Thriller">Thriller</option>
+            </select>
+        </div>
+
+        <!-- FILMS DISPLAY -->
+        <div class="content-wrapper">
+            <div id="loading" class="loading-indicator">Načítání...</div>
+            <div id="shows-grid" class="shows-grid">
+                <!-- PRO ENGETO: Filmové plakáty budou zde -->
+            </div>
+            <div id="no-results" class="no-results" style="display: none;">
+                <p>Pro tuto kategorii nebyly nalezeny žádné výsledky.</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Tlačítko pro návrat nahoru -->
+    <button id="scroll-to-top" class="scroll-to-top-btn" title="Zpět nahoru">
+        <i class="fa fa-arrow-up"></i>
+    </button>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

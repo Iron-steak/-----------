@@ -1,0 +1,350 @@
+/* ====== ZÁKLADNÍ NASTAVENÍ ====== */
+:root {
+  --netflix-red: #e50914;
+  --netflix-red-hover: #f40612;
+  --black: #000;
+  --dark-grey: #141414;
+  --light-grey: #737373;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--black);
+  color: #fff;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.container {
+  max-width: 950px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* ====== POZADÍ PRO HLAVNÍ STRÁNKU ====== */
+.background-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+}
+
+.static-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.static-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  background-image: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0, rgba(0, 0, 0, 0) 60%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+/* ====== HLAVIČKA STRÁNKY ====== */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 20px 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  background-color: var(--black);
+}
+
+.logo {
+  height: 35px;
+}
+
+/* ====== TLAČÍTKA ====== */
+.btn {
+  display: inline-block;
+  background: var(--netflix-red);
+  color: #fff;
+  padding: 8px 17px;
+  font-size: 15px;
+  border-radius: 3px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: var(--netflix-red-hover);
+}
+
+.btn-lg {
+  font-size: 15px;
+  padding: 15px 30px;
+}
+
+.btn-full {
+  width: 100%;
+  padding: 15px;
+  font-size: 1.1rem;
+}
+
+.btn i {
+  margin-left: 10px;
+}
+
+/* ====== HERO SEKCE ====== */
+.hero {
+  height: 85vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero h1 {
+  font-size: 50px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.hero .subtitle {
+  font-size: 25px;
+  font-weight: 400;
+  margin: 1rem 0;
+}
+
+.hero .cta-text {
+  font-size: 24px;
+  padding: 0 10%;
+  margin-bottom: 20px;
+}
+
+.email-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.email-form input {
+  width: 450px;
+  height: 50px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #8c8c8c;
+  border-radius: 2px;
+  background: #000000;
+}
+
+/* ====== SEKCE NÁHLEDŮ ====== */
+.preview-section {
+  padding: 50px 0;
+  background: var(--dark-grey);
+}
+
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.poster {
+  transition: transform 0.3s;
+}
+
+.poster:hover {
+  transform: scale(1.05);
+}
+
+.poster img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ====== PATIČKA ====== */
+.main-footer {
+  padding: 70px 45px;
+  color: var(--light-grey);
+  background: var(--dark-grey);
+}
+
+.footer-title {
+  margin-bottom: 30px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.footer-column a {
+  display: block;
+  margin-bottom: 10px;
+  color: var(--light-grey);
+  text-decoration: none;
+  font-size: 13px;
+}
+
+.footer-column a:hover {
+  text-decoration: underline;
+}
+
+.footer-country {
+  font-size: 13px;
+  margin-top: 20px;
+}
+
+/* ====== TLAČÍTKO NAHORU ====== */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: transparent;
+  display: none;
+  z-index: 100;
+}
+
+/* ====== REGISTRACE ====== */
+body.bg-black {
+  background: var(--black);
+}
+
+.register-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.register-header {
+  width: 100%;
+  padding: 20px 50px;
+}
+
+.register-container {
+  background: rgba(0, 0, 0, 0.75);
+  padding: 60px;
+  border-radius: 4px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.register-form h2 {
+  margin-bottom: 20px;
+}
+
+.register-form input {
+  width: 100%;
+  height: 50px;
+  margin-bottom: 20px;
+  padding: 16px 20px;
+  border-radius: 4px;
+  border: none;
+  background: #333;
+  color: #fff;
+}
+
+.register-form input.invalid {
+  border-bottom: 2px solid #e87c03;
+}
+
+.back-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-link a {
+  color: var(--light-grey);
+  text-decoration: none;
+}
+
+/* ====== STRÁNKA S FILMY ====== */
+body.movies-body {
+  background: var(--black) !important;
+  color: #fff;
+}
+
+.movies-body .background-container {
+  display: none;
+}
+
+.movies-page-container {
+  width: 100%;
+  padding: 20px;
+}
+
+.movies-controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 0 40px 0;
+}
+
+.category-select {
+  background: var(--black);
+  color: #fff;
+  border: 1px solid var(--netflix-red);
+  padding: 10px;
+  border-radius: 2px;
+}
+
+.content-wrapper {
+  width: 100%;
+}
+
+.shows-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 25px;
+  padding: 20px 5%;
+}
+
+.show-card {
+  width: 200px;
+  border: 4px solid white;
+  border-radius: 4px;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.5);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  transform: rotate(5deg);
+}
+
+.show-card:hover {
+  transform: scale(1.1) rotate(5deg);
+  z-index: 100;
+}
+
+.show-card img {
+  width: 100%;
+  display: block;
+}
+
+.show-card-info {
+  display: none;
+}
