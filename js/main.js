@@ -1,6 +1,5 @@
 // Čekáme, až se načte celý HTML dokument
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Společné funkce pro všechny stránky ---
 
   const scrollToTopBtn = document.getElementById("scroll-to-top")
 
@@ -20,23 +19,21 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   }
 
-  // --- Logika pro hlavní stránku (index.html) ---
+  // --- Logika pro (index.html) ---
   const emailForm = document.getElementById("email-form")
   if (emailForm) {
     emailForm.addEventListener("submit", (e) => {
       e.preventDefault()
       const email = document.getElementById("email-input").value
       if (email) {
-        // Přesměrujeme na registraci s předvyplněným emailem
         window.location.href = `register.html?email=${encodeURIComponent(email)}`
       }
     })
   }
 
-  // --- Logika pro registrační stránku (register.html) ---
+  // --- Logika pro (register.html) ---
   const registerForm = document.getElementById("register-form")
   if (registerForm) {
-    // Zkusíme získat email z URL a předvyplnit ho
     const params = new URLSearchParams(window.location.search)
     const emailFromUrl = params.get("email")
     if (emailFromUrl) {
@@ -54,13 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         confirmPasswordInput.classList.remove("invalid")
         alert("Registrace úspěšná!")
-        // Tady by se data odeslala na server
         console.log("Formulář odeslán.")
       }
     })
   }
 
-  // --- Logika pro stránku s filmy (movies.html) ---
+  // --- Logika pro (movies.html) ---
   const moviesGrid = document.getElementById("shows-grid")
   if (moviesGrid) {
     const categorySelect = document.getElementById("category-select")
@@ -71,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const fetchMovies = async (category) => {
       loading.style.display = "block"
       noResults.style.display = "none"
-      moviesGrid.innerHTML = "" // Vyčistíme staré výsledky
+      moviesGrid.innerHTML = ""
 
       try {
         const response = await fetch(`https://api.tvmaze.com/search/shows?q=${category}`)
@@ -110,8 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
     categorySelect.addEventListener("change", () => {
       fetchMovies(categorySelect.value)
     })
-
-    // Prvotní načtení filmů
     fetchMovies(categorySelect.value)
   }
 })
