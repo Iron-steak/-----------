@@ -284,9 +284,6 @@ class NetflixClone {
       // Simulate successful registration
       console.log("Registration data:", formData)
       alert("Registrace byla úspěšná!")
-
-      // In a real app, you would send data to server here
-      // this.submitRegistrationData(formData);
     })
   }
 
