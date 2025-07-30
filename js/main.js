@@ -52,6 +52,15 @@ const ValidationUtils = {
   },
 
   /**
+   * Check if password contains both letters and numbers
+   */
+  hasLettersAndNumbers: (password) => {
+    const hasLetters = /[a-zA-Z]/.test(password)
+    const hasNumbers = /[0-9]/.test(password)
+    return hasLetters && hasNumbers
+  },
+
+  /**
    * Check if passwords match and meet requirements
    */
   validatePasswords: (password, confirmPassword) => {
@@ -71,13 +80,18 @@ const ValidationUtils = {
       return result
     }
 
+    if (!ValidationUtils.hasLettersAndNumbers(password)) {
+      result.message = "Heslo musí obsahovat písmena i čísla"
+      return result
+    }
+
     if (password !== confirmPassword) {
       result.message = "Hesla se neshodují"
       return result
     }
 
     result.isValid = true
-    result.message = "Hesla se shodují"
+    result.message = "Hesla se shodují a splňují požadavky"
     result.type = "success"
     return result
   },
@@ -216,8 +230,8 @@ class NetflixClone {
       const validation = ValidationUtils.validatePasswords(password, confirmPassword)
 
       // Update input states
-      this.updateInputValidationState(passwordInput, validation.isValid)
-      this.updateInputValidationState(confirmPasswordInput, validation.isValid)
+      this.updateInputValidationState(passwordInput, validation.isValid, password)
+      this.updateInputValidationState(confirmPasswordInput, validation.isValid, confirmPassword)
 
       // Update validation message
       this.updateValidationMessage(validationMessage, validation)
@@ -231,8 +245,8 @@ class NetflixClone {
   /**
    * Update input field validation state
    */
-  updateInputValidationState(input, isValid) {
-    if (!input.value) {
+  updateInputValidationState(input, isValid, value) {
+    if (!value) {
       DOMUtils.removeClass(input, "error-state")
       DOMUtils.removeClass(input, "success-state")
       return
