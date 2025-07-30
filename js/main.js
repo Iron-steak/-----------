@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 /**
  * Netflix Clone - Main JavaScript File
  * Handles all interactive functionality across the application
  */
+=======
+// Čekáme, až se načte celý HTML dokument
+document.addEventListener("DOMContentLoaded", () => {
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
 
 // Application state and configuration
 const APP_CONFIG = {
@@ -150,6 +155,7 @@ class NetflixClone {
     })
   }
 
+<<<<<<< HEAD
   /**
    * Initialize home page functionality
    */
@@ -166,6 +172,16 @@ class NetflixClone {
         DOMUtils.addClass(emailInput, "error-state")
         alert("Zadejte platnou e-mailovou adresu")
         return
+=======
+  // --- Logika pro (index.html) ---
+  const emailForm = document.getElementById("email-form")
+  if (emailForm) {
+    emailForm.addEventListener("submit", (e) => {
+      e.preventDefault()
+      const email = document.getElementById("email-input").value
+      if (email) {
+        window.location.href = `register.html?email=${encodeURIComponent(email)}`
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
       }
 
       DOMUtils.removeClass(emailInput, "error-state")
@@ -173,6 +189,7 @@ class NetflixClone {
     })
   }
 
+<<<<<<< HEAD
   /**
    * Initialize registration page functionality
    */
@@ -181,6 +198,16 @@ class NetflixClone {
     this.initPasswordValidation()
     this.initRegistrationForm()
   }
+=======
+  // --- Logika pro (register.html) ---
+  const registerForm = document.getElementById("register-form")
+  if (registerForm) {
+    const params = new URLSearchParams(window.location.search)
+    const emailFromUrl = params.get("email")
+    if (emailFromUrl) {
+      document.getElementById("register-email").value = emailFromUrl
+    }
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
 
   /**
    * Pre-fill email from URL parameter
@@ -272,6 +299,7 @@ class NetflixClone {
 
     registerForm.addEventListener("submit", (e) => {
       e.preventDefault()
+<<<<<<< HEAD
 
       const formData = this.getFormData(registerForm)
       const validation = ValidationUtils.validatePasswords(formData.password, formData.confirmPassword)
@@ -279,6 +307,15 @@ class NetflixClone {
       if (!validation.isValid) {
         alert(validation.message)
         return
+=======
+      if (passwordInput.value !== confirmPasswordInput.value) {
+        alert("Hesla se neshodují!")
+        confirmPasswordInput.classList.add("invalid")
+      } else {
+        confirmPasswordInput.classList.remove("invalid")
+        alert("Registrace úspěšná!")
+        console.log("Formulář odeslán.")
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
       }
 
       // Simulate successful registration
@@ -287,6 +324,7 @@ class NetflixClone {
     })
   }
 
+<<<<<<< HEAD
   /**
    * Extract form data into object
    */
@@ -314,14 +352,27 @@ class NetflixClone {
    * Initialize category selector functionality
    */
   initCategorySelector() {
+=======
+  // --- Logika pro (movies.html) ---
+  const moviesGrid = document.getElementById("shows-grid")
+  if (moviesGrid) {
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
     const categorySelect = document.getElementById("category-select")
     if (!categorySelect) return
 
+<<<<<<< HEAD
     categorySelect.addEventListener("change", (e) => {
       const selectedCategory = e.target.value
       this.loadMoviesByCategory(selectedCategory)
     })
   }
+=======
+    // Funkce pro načtení filmů z API
+    const fetchMovies = async (category) => {
+      loading.style.display = "block"
+      noResults.style.display = "none"
+      moviesGrid.innerHTML = ""
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
 
   /**
    * Load initial movies on page load
@@ -402,8 +453,12 @@ class NetflixClone {
       console.log("Movie clicked:", movie.name)
       // Future: Open movie details modal or navigate to details page
     })
+<<<<<<< HEAD
 
     return movieElement
+=======
+    fetchMovies(categorySelect.value)
+>>>>>>> 7e1488d9108b5931253b4cf410be879766a670fa
   }
 
   /**
